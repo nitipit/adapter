@@ -1,92 +1,107 @@
 <!DOCTYPE html>
 
 
+
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HNHSQQQLL2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HNHSQQQLL2');
+</script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adapter: A Tiny Web Component with Styles</title>
-    <meta name="description" content="A Tiny Web Component with Styles">
-    <link rel="stylesheet" href="base.css?v=1">
-    <link rel="stylesheet" href="index.css?v=1">
-    <script defer src="index.js?v=1"></script>
+    <title>Adapter : A Stylish Web Component</title>
+    <meta name="description" content="A Stylish Web Component">
+    <link rel="stylesheet" href="./_asset/normalize.css/normalize.css?v=2">
+    <link rel="stylesheet" href="./font.css?v=2">
+    <link rel="stylesheet" href="./base.css?v=2">
+    <script defer src="./_asset/adapter/adapter.bundle.js?v=2&as=adapter"></script>
+    <script defer src="./base.js?v=2"></script>
+    
 </head>
 <body>
-<id-highlight>
+
+<id-header>
     <div class="container">
         <h1>Adapter</h1>
-        <h2>A Tiny Web Component with Styles</h2>
+        <h2 style="margin-top: 0;">A Stylish Web Component</h2>
     </div>
-</id-highlight>
-<el-paragraph>
+</id-header>
+
+<el-nav>
     <div class="container">
-        <div style="margin-top: 2rem; width: 100%;"></div>
-<p><strong>Adapter</strong> use simple and small <code>15KB</code> <strong>Javascript</strong> codes which bring <strong>CSS</strong>
-into <strong>Web Component</strong>.</p>
-<pre><code class="language-js">import { define, Adapter } from 'adapter/src/adapter.ts'
-
-class Paragraph extends Adapter {};
-define('el-paragraph', Paragraph);
-Paragraph.tagStyle(`
-    .container {
-        display: block;
-    }
-    p {
-        width: 100%;
-        font-size: 1rem;
-    }
-`);
-Paragraph.classStyle('flex', `
-    .container {
-        display: flex;
-    }
-`);
-</code></pre>
-<p>The codes above will render <strong>CSS</strong> as :</p>
-<pre><code class="language-css">el-paragraph .container {
-    display: block;
-}
-el-paragraph p {
-    width: 100%;
-    font-size: 1rem;
-}
-el-paragraph.flex .container {
-    display: flex;
-}
-</code></pre>
-<p>Usage in <strong>HTML</strong> :</p>
-<pre><code class="language-html">&lt;el-paragraph&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;p&gt;Block paragraph&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/el-paragraph&gt;
-&lt;el-paragraph class=&quot;flex&quot;&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;p&gt;Flexbox paragraph&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/el-paragraph&gt;
-</code></pre>
-<h2>&quot;CSS&quot; management is easy if we do it in the right way.</h2>
-<p><strong>CSS</strong> in complex WebApp nowadays is getting messy. Because <strong>CSS</strong>
-is just styling language. It lacks of features to scale up and maintain.
-However, <strong>Adapter</strong> fix those problems by bringing <strong>CSS</strong>
-into <strong>OOP</strong> world with <strong>Javascript</strong> and <strong>Web Component</strong>.
-This is very easy but powerful solutions compare to other
-<strong>CSS</strong> methodoligies or frameworks.</p>
-<p><strong>Adapter</strong> is not a complete set of <strong>CSS</strong> for web design. It just integrates
-<strong>CSS</strong> into <strong>Web Component</strong> and <strong>Javascript</strong> with:</p>
-<ol>
-<li>Simple <strong>API</strong>, easy to understand.</li>
-<li>Based on standard. Works well with other tools or frameworks.</li>
-<li><strong>CSS</strong> is under your control and encasulated in components.</li>
-</ol>
-<p>You can see <a href="https://nitipit.github.io/gadjet/index.html">Gadjet</a> project
-which based on <strong>Adapter</strong>. I Hope this can be the initiation for many
-HTML UI projects to come in the future. ;)</p>
-
+        <a href="./index.html">Intro</a>
+        <a href="./usage/usage.html">Usage</a>
+        <a href="./api/api.html">API</a>
     </div>
+</el-nav>
+
+<el-paragraph>
+<div class="container" style="margin-top: 2rem;">
+    <strong style="font-size: 1.5rem; text-align: center; margin: auto;">
+        "CSS management is easy<br>with &lt;web-component/&gt;"
+    </strong>
+</div>
+<div class="container" style="display: flex; justify-content: center;">
+    <div style="width: 100%; text-align: center;">
+        <img src="relax.jpg" style="max-width: 600px; margin: auto;">
+    </div>
+    <div style="font-size: 0.7rem;">
+        <a href="https://www.freepik.com/free-vector/flat-happy-teen-girl-headphones-sitting-home-bean-bag-chair-using-smartphone-online-education-woman-relaxing-listening-music-audio-podcast-radio-audiobook-mobile-phone_16503842.htm#query=relax&position=2&from_view=search&track=sph"
+                target="_blank">
+            Image by redgreystock
+        </a>
+        on Freepik
+    </div>
+</div>
+<div class="container">
+    <p><strong>CSS</strong> in complex WebApp nowadays is getting messy, because <strong>CSS</strong>
+is just styling language. It lacks of features to scale up and maintain.
+However, <strong>Adapter</strong> fix these problems by bringing <strong>CSS</strong>
+into <strong>OOP</strong> world with <strong>Javascript</strong> and <strong>&lt;web-component/&gt;</strong>.
+This is a very easy but powerful solution which leverages <strong>CSS</strong>
+to the next level with following advantages:</p>
+<ol>
+<li>Simple <strong>API</strong>, easy to understand and use.</li>
+<li>Using <strong>&lt;web-component/&gt;</strong> which is standard and works well
+with other tools or frameworks.</li>
+<li><strong>CSS</strong> becomes Adaptive, Programmable and can be encapsulted inside
+<strong>&lt;web-component/&gt;</strong></li>
+</ol>
+<blockquote>
+<p><strong>Adapter</strong> is just <code>15KB</code> javascript minified.<br />
+You can see <a href="https://nitipit.github.io/gadjet/index.html">Gadjet</a> project
+which based on <strong>Adapter</strong>.</p>
+</blockquote>
+<p>Let's see how to style <strong>CSS</strong> with <strong>Adapter</strong></p>
+<p><code class="tag">js</code></p>
+<pre><code class="language-js">class Paragraph extends Adapter {};
+define('el-paragraph', Paragraph);
+Paragraph.tagStyle(`background-color: white;`);
+Paragraph.classStyle('grey', `background-color: grey;`);
+
+const paragraph2 = document.querySelector(&quot;parapraph-2&quot;);
+paragraph2.addStyle(`
+   color: white;
+   font-size: 1.5rem;
+`);
+</code></pre>
+<p><code class="tag">html</code></p>
+<pre><code class="language-html">&lt;el-paragraph&gt;First Paragraph&lt;/el-paragraph&gt;
+&lt;el-paragraph id=&quot;paragraph-2&quot; class=&quot;grey&quot;&gt;Second Paragraph&lt;/el-paragraph&gt;
+</code></pre>
+
+</div>
 </el-paragraph>
+
 <id-footer></id-footer>
+
 </body>
 </html>

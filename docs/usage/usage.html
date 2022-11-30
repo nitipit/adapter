@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HNHSQQQLL2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HNHSQQQLL2');
+</script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adapter : A Stylish Web Component</title>
+    <meta name="description" content="A Stylish Web Component">
+    <link rel="stylesheet" href="../../_asset/normalize.css/normalize.css?v=2">
+    <link rel="stylesheet" href="../../font.css?v=2">
+    <link rel="stylesheet" href="../../base.css?v=2">
+    <script defer src="../../_asset/adapter/adapter.bundle.js?v=2&as=adapter"></script>
+    <script defer src="../../base.js?v=2"></script>
+    
+</head>
+<body>
+
+
+<el-nav>
+    <div class="container">
+        <a href="../../index.html">Intro</a>
+        <a href="../../usage/usage.html">Usage</a>
+        <a href="../../api/api.html">API</a>
+    </div>
+</el-nav>
+
+<el-paragraph>
+    <div class="container">
+    <h2>Installation</h2>
+<hr />
+<p><code class="tag">shell</code></p>
+<pre><code class="language-shell">$ npm install @nitipit/adapter
+</code></pre>
+<h2>Usage</h2>
+<hr />
+<h3>Option 1 : Javascript bundle</h3>
+<p>This is the easiest way to use <strong>Adapter</strong>.
+Just copy <code>adapter.bundle.js</code> into your
+website asset which can be accessed by browser.</p>
+<p><code class="tag">html: &lt;head&gt;</code></p>
+<pre><code class="language-html&lt;head&gt;">&lt;!-- #1 --&gt;
+&lt;script src=&quot;adapter.bundle.js?as=adapter&quot;&gt;&lt;/script&gt;
+
+&lt;!-- #2 --&gt;
+&lt;script&gt;
+class Paragraph extends adapter.Adapter {};
+define('el-paragraph', Paragraph);
+
+Paragraph.tagStyle(`
+    background-color: white;
+`);
+
+Paragraph.classStyle('grey', `
+    background-color: grey;
+`);
+&lt;/script&gt;
+</code></pre>
+<p><code class="tag">html: &lt;body&gt;</code></p>
+<pre><code class="language-html">&lt;el-paragraph&gt;&lt;!-- Background is white&quot; --&gt;&lt;/el-paragraph&gt;
+&lt;el-paragraph class=&quot;grey&quot;&gt;&lt;!-- Background is grey&quot; --&gt;&lt;/el-paragraph&gt;
+</code></pre>
+<h3>Option 2 : Javascript module with build tools.</h3>
+<p><a href="https://parceljs.org/">parcel</a> is recommend. Other tools aren't tested
+but should work fine.
+(<strong>esbuild</strong>, <strong>vite</strong> or <strong>webpack</strong>).</p>
+<p><code class="tag">js : index.js</code></p>
+<pre><code class="language-js">import { define, Adapter } from '@nitipit/adapter';
+class Paragraph extends Adapter {};
+define('el-paragraph', Paragraph);
+</code></pre>
+<p>Install parcel &amp; build</p>
+<p><code class="tag">shell</code></p>
+<pre><code class="language-shell">$ npm install --save-dev parcel
+$ npx parcel build 'index.js' --dist-dir 'html'
+</code></pre>
+
+    </div>
+</el-paragraph>
+<id-footer></id-footer>
+
+</body>
+</html>
