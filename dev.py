@@ -13,22 +13,40 @@ async def engrave():
 
 
 async def docs():
-    src_dir = _dir.joinpath('docs-src').resolve()
-    src_dir = f'{src_dir}/**/*.(scss|js|ts)'
-    dest_dir = _dir.joinpath('docs')
-    proc = f"npx parcel watch '{src_dir}' --dist-dir {dest_dir}"
+    src = _dir.joinpath('docs-src').resolve()
+    src = f'{src}/**/*.(scss|js|ts|jpg|png)'
+    proc = f"npx parcel watch '{src}' --target docs"
+    print(proc)
     proc = await asyncio.create_subprocess_shell(proc)
     await proc.communicate()
 
 
-async def lib():
+async def docs_lib():
+    # Highlight.js
     src = _dir.joinpath('node_modules/highlight.js/styles/github.css')
-    dest_dir = _dir.joinpath('docs/_asset/highlight.js/styles/')
+    dest = _dir.joinpath('docs/_asset/highlight.js/styles/')
     try:
-        dest_dir.mkdir(parents=True)
+        dest.mkdir(parents=True)
     except FileExistsError:
         pass
-    shutil.copy(src, dest_dir)
+    print(f'Copy: {src} -> {dest}')
+    shutil.copy(src, dest)
+
+    # Normalize.css
+    proc = f'npx esbuild node_modules/normalize.css/normalize.css --outdir=docs/_asset/normalize.css/ --minify'
+    print(proc)
+    proc = await asyncio.create_subprocess_shell(proc)
+    await proc.communicate()
+
+    # Icomoon
+    src = _dir.joinpath('docs-src/_asset/icomoon/')
+    dest = _dir.joinpath('docs/_asset/icomoon')
+    try:
+        dest.mkdir(parents=True)
+    except FileExistsError:
+        pass
+    print(f'Copy: {src} -> {dest}')
+    shutil.copytree(src, dest, dirs_exist_ok=True)
 
 
 async def http():
@@ -41,10 +59,11 @@ async def http():
 async def main():
     await asyncio.gather(
         engrave(),
-        lib(),
+        docs_lib(),
         docs(),
         http(),
     )
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
